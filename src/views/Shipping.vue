@@ -1,7 +1,12 @@
 <template>
   <div class="shipping">
     <div class="container">
+      <div class="decorative-border top-left"></div>
+      <div class="decorative-border top-right"></div>
+      <div class="decorative-border bottom-left"></div>
+      <div class="decorative-border bottom-right"></div>
       <h1 class="section-title">Shipping Information</h1>
+      <div class="decorative-line"></div>
 
       <!-- Checkout Steps -->
       <div class="checkout-steps">
@@ -97,8 +102,8 @@
             </div>
 
             <div class="form-actions">
-              <router-link to="/checkout" class="btn btn-secondary back-btn">
-                return
+              <router-link to="/products" class="btn btn-primary">
+                Browse Products
               </router-link>
               <button type="submit" class="btn btn-success proceed-btn" :disabled="!formIsValid">
                 continue
@@ -225,14 +230,18 @@ export default {
 
 <style scoped>
 .shipping {
-  padding: 20px 0;
+  padding: 40px 0;
+  font-family: 'Playfair Display', 'Times New Roman', Georgia, serif;
+  background-color: #fafafa;
+  position: relative;
 }
 
 .checkout-steps {
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-bottom: 40px;
+  margin-bottom: 50px;
+  font-family: 'Playfair Display', serif;
 }
 
 .step {
@@ -245,48 +254,63 @@ export default {
 .step-number {
   width: 40px;
   height: 40px;
-  background-color: #bdc3c7;
+  background-color: #666666;
   color: white;
-  border-radius: 50%;
   display: flex;
   justify-content: center;
   align-items: center;
-  font-weight: bold;
+  font-weight: 600;
   margin-bottom: 10px;
+  position: relative;
+}
+
+.step-number:before {
+  content: '';
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  right: 3px;
+  bottom: 3px;
+  border: 1px solid rgba(255, 255, 255, 0.3);
 }
 
 .step.active .step-number {
-  background-color: #3498db;
+  background-color: #121212;
 }
 
 .step.completed .step-number {
-  background-color: #2ecc71;
+  background-color: #121212;
+  opacity: 0.8;
 }
 
 .step-connector {
   width: 100px;
-  height: 2px;
-  background-color: #bdc3c7;
-  margin: 0 10px;
+  height: 1px;
+  background-color: #cccccc;
+  margin: 0 15px;
 }
 
 .step-connector.completed {
-  background-color: #2ecc71;
+  background-color: #121212;
+  opacity: 0.8;
 }
 
 .step-label {
-  color: #7f8c8d;
+  color: #666666;
   font-size: 14px;
+  font-family: 'Playfair Display', serif;
+  letter-spacing: 0.5px;
 }
 
 .step.active .step-label {
-  color: #3498db;
-  font-weight: bold;
+  color: #121212;
+  font-weight: 600;
 }
 
 .step.completed .step-label {
-  color: #2ecc71;
-  font-weight: bold;
+  color: #121212;
+  font-weight: 600;
+  opacity: 0.8;
 }
 
 .shipping-content {
@@ -299,15 +323,84 @@ export default {
   flex: 2;
   min-width: 600px;
   background-color: white;
-  border-radius: 8px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-  padding: 20px;
+  border: 1px solid #e0e0e0;
+  padding: 30px;
+  position: relative;
+}
+
+.shipping-form:before {
+  content: '';
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  right: 10px;
+  bottom: 10px;
+  border: 1px solid rgba(18, 18, 18, 0.05);
+  pointer-events: none;
+  z-index: 1;
 }
 
 .section-subtitle {
-  font-size: 20px;
-  margin-bottom: 20px;
-  color: #2c3e50;
+  font-size: 22px;
+  margin-bottom: 25px;
+  color: #121212;
+  font-family: 'Playfair Display', serif;
+  font-weight: 600;
+  position: relative;
+  padding-bottom: 10px;
+}
+
+.section-subtitle:after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 40px;
+  height: 1px;
+  background-color: #121212;
+}
+
+.decorative-line {
+  height: 1px;
+  width: 120px;
+  background-color: rgba(18, 18, 18, 0.3);
+  margin: 0 auto 40px;
+}
+
+.decorative-border {
+  position: absolute;
+  width: 50px;
+  height: 50px;
+  border-color: rgba(18, 18, 18, 0.15);
+  z-index: 1;
+}
+
+.top-left {
+  top: 20px;
+  left: 20px;
+  border-top: 1px solid;
+  border-left: 1px solid;
+}
+
+.top-right {
+  top: 20px;
+  right: 20px;
+  border-top: 1px solid;
+  border-right: 1px solid;
+}
+
+.bottom-left {
+  bottom: 20px;
+  left: 20px;
+  border-bottom: 1px solid;
+  border-left: 1px solid;
+}
+
+.bottom-right {
+  bottom: 20px;
+  right: 20px;
+  border-bottom: 1px solid;
+  border-right: 1px solid;
 }
 
 .form-section {
@@ -328,21 +421,29 @@ export default {
 
 .form-group label {
   display: block;
-  margin-bottom: 5px;
-  font-weight: bold;
-  color: #2c3e50;
+  margin-bottom: 8px;
+  font-weight: 600;
+  color: #121212;
+  font-family: 'Playfair Display', serif;
+  letter-spacing: 0.5px;
 }
 
 .required {
-  color: #e74c3c;
+  color: #121212;
 }
 
 .form-control {
   width: 100%;
-  padding: 10px;
-  border: 1px solid #ddd;
-  border-radius: 4px;
+  padding: 12px;
+  border: 1px solid #e0e0e0;
   font-size: 16px;
+  font-family: 'Playfair Display', serif;
+  transition: border-color 0.3s ease;
+}
+
+.form-control:focus {
+  outline: none;
+  border-color: #121212;
 }
 
 .payment-methods {
@@ -362,17 +463,32 @@ export default {
 
 .payment-label {
   display: block;
-  padding: 15px;
-  border: 2px solid #ddd;
-  border-radius: 8px;
+  padding: 20px;
+  border: 1px solid #e0e0e0;
   cursor: pointer;
   transition: all 0.3s;
   text-align: center;
+  position: relative;
+}
+
+.payment-label:before {
+  content: '';
+  position: absolute;
+  top: 5px;
+  left: 5px;
+  right: 5px;
+  bottom: 5px;
+  border: 1px solid rgba(18, 18, 18, 0);
+  transition: border-color 0.3s ease;
+  pointer-events: none;
 }
 
 .payment-method input:checked+.payment-label {
-  border-color: #3498db;
-  box-shadow: 0 0 10px rgba(52, 152, 219, 0.3);
+  border-color: #121212;
+}
+
+.payment-method input:checked+.payment-label:before {
+  border-color: rgba(18, 18, 18, 0.1);
 }
 
 .payment-logo {
@@ -388,8 +504,11 @@ export default {
 }
 
 .payment-name {
-  font-weight: bold;
-  color: #2c3e50;
+  font-weight: 600;
+  color: #121212;
+  font-family: 'Playfair Display', serif;
+  margin-top: 10px;
+  letter-spacing: 0.5px;
 }
 
 .form-actions {
@@ -400,11 +519,39 @@ export default {
 
 .back-btn,
 .proceed-btn {
-  padding: 10px 30px;
+  padding: 12px 25px;
+  font-family: 'Playfair Display', serif;
+  letter-spacing: 0.5px;
+  transition: all 0.3s ease;
+  border: 1px solid;
+  margin-bottom: 10px;
+}
+
+.proceed-btn {
+  background-color: #121212;
+  border-color: #121212;
+  color: white;
+}
+
+.proceed-btn:hover {
+  background-color: white;
+  color: #121212;
+}
+
+.back-btn {
+  background-color: white;
+  border-color: #121212;
+  color: #121212;
+}
+
+.back-btn:hover {
+  background-color: #f5f5f5;
 }
 
 .proceed-btn:disabled {
-  background-color: #95a5a6;
+  background-color: #cccccc;
+  border-color: #cccccc;
+  color: #666666;
   cursor: not-allowed;
 }
 
@@ -412,10 +559,22 @@ export default {
   flex: 1;
   min-width: 300px;
   background-color: white;
-  border-radius: 8px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-  padding: 20px;
+  border: 1px solid #e0e0e0;
+  padding: 30px;
   align-self: flex-start;
+  position: relative;
+}
+
+.order-summary:before {
+  content: '';
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  right: 10px;
+  bottom: 10px;
+  border: 1px solid rgba(18, 18, 18, 0.05);
+  pointer-events: none;
+  z-index: 1;
 }
 
 .summary-items {
@@ -440,13 +599,14 @@ export default {
 .summary-item-price {
   flex: 1;
   text-align: right;
-  font-weight: bold;
+  font-weight: 600;
+  font-family: 'Playfair Display', serif;
 }
 
 .summary-divider {
   height: 1px;
-  background-color: #ddd;
-  margin: 15px 0;
+  background-color: #e0e0e0;
+  margin: 20px 0;
 }
 
 .summary-row {
@@ -458,8 +618,9 @@ export default {
 
 .summary-row.total {
   font-size: 20px;
-  font-weight: bold;
-  color: #e74c3c;
+  font-weight: 700;
+  color: #121212;
+  font-family: 'Playfair Display', serif;
 }
 
 @media (max-width: 992px) {

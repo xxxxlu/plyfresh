@@ -1,7 +1,12 @@
 <template>
   <div class="checkout">
     <div class="container">
+      <div class="decorative-border top-left"></div>
+      <div class="decorative-border top-right"></div>
+      <div class="decorative-border bottom-left"></div>
+      <div class="decorative-border bottom-right"></div>
       <h1 class="section-title">Checkout</h1>
+      <div class="decorative-line"></div>
 
       <!-- Checkout Steps -->
       <div class="checkout-steps">
@@ -32,7 +37,7 @@
             </div>
             <div class="order-item-info">
               <h3 class="order-item-title">{{ item.title }}</h3>
-              <p class="order-item-author">{{ item.author }}</p>
+              <p class="order-item-author">Origin: {{ item.author }}</p>
               <div class="order-item-price-qty">
                 <span class="order-item-price">Rs.{{ item.price }}</span>
                 <span class="order-item-qty">× {{ item.quantity }}</span>
@@ -93,7 +98,7 @@
         <h2>Your shopping cart is empty</h2>
         <p>Please add items to the shopping cart before checking out. </p>
         <router-link to="/products" class="btn btn-primary">
-          Browse books
+          Browse Products
         </router-link>
       </div>
     </div>
@@ -125,14 +130,18 @@ export default {
 
 <style scoped>
 .checkout {
-  padding: 20px 0;
+  padding: 40px 0;
+  font-family: 'Playfair Display', 'Times New Roman', Georgia, serif;
+  background-color: #fafafa;
+  position: relative;
 }
 
 .checkout-steps {
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-bottom: 40px;
+  margin-bottom: 50px;
+  font-family: 'Playfair Display', serif;
 }
 
 .step {
@@ -145,35 +154,47 @@ export default {
 .step-number {
   width: 40px;
   height: 40px;
-  background-color: #bdc3c7;
+  background-color: #666666;
   color: white;
-  border-radius: 50%;
   display: flex;
   justify-content: center;
   align-items: center;
-  font-weight: bold;
+  font-weight: 600;
   margin-bottom: 10px;
+  position: relative;
+}
+
+.step-number:before {
+  content: '';
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  right: 3px;
+  bottom: 3px;
+  border: 1px solid rgba(255, 255, 255, 0.3);
 }
 
 .step.active .step-number {
-  background-color: #3498db;
+  background-color: #121212;
 }
 
 .step-connector {
   width: 100px;
-  height: 2px;
-  background-color: #bdc3c7;
-  margin: 0 10px;
+  height: 1px;
+  background-color: #cccccc;
+  margin: 0 15px;
 }
 
 .step-label {
-  color: #7f8c8d;
+  color: #666666;
   font-size: 14px;
+  font-family: 'Playfair Display', serif;
+  letter-spacing: 0.5px;
 }
 
 .step.active .step-label {
-  color: #3498db;
-  font-weight: bold;
+  color: #121212;
+  font-weight: 600;
 }
 
 .checkout-content {
@@ -183,9 +204,23 @@ export default {
 }
 
 .section-subtitle {
-  font-size: 20px;
-  margin-bottom: 20px;
-  color: #2c3e50;
+  font-size: 22px;
+  margin-bottom: 25px;
+  color: #121212;
+  font-family: 'Playfair Display', serif;
+  font-weight: 600;
+  position: relative;
+  padding-bottom: 10px;
+}
+
+.section-subtitle:after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 40px;
+  height: 1px;
+  background-color: #121212;
 }
 
 .order-items {
@@ -195,11 +230,23 @@ export default {
 
 .order-item {
   display: flex;
-  padding: 20px;
+  padding: 25px;
   background-color: white;
-  border-radius: 8px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-  margin-bottom: 15px;
+  border: 1px solid #e0e0e0;
+  margin-bottom: 20px;
+  position: relative;
+}
+
+.order-item:before {
+  content: '';
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  right: 10px;
+  bottom: 10px;
+  border: 1px solid rgba(18, 18, 18, 0.05);
+  pointer-events: none;
+  z-index: 1;
 }
 
 .order-item-image {
@@ -222,13 +269,17 @@ export default {
 
 .order-item-title {
   font-size: 18px;
-  margin-bottom: 5px;
-  color: #2c3e50;
+  margin-bottom: 8px;
+  color: #121212;
+  font-family: 'Playfair Display', serif;
+  font-weight: 600;
 }
 
 .order-item-author {
-  color: #7f8c8d;
+  color: #666666;
   margin-bottom: 15px;
+  font-family: 'Playfair Display', serif;
+  font-style: italic;
 }
 
 .order-item-price-qty {
@@ -243,18 +294,31 @@ export default {
 
 .order-item-total {
   text-align: right;
-  font-weight: bold;
-  color: #e74c3c;
+  font-weight: 600;
+  color: #121212;
+  font-family: 'Playfair Display', serif;
 }
 
 .order-summary {
   flex: 1;
   min-width: 300px;
   background-color: white;
-  border-radius: 8px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-  padding: 20px;
+  border: 1px solid #e0e0e0;
+  padding: 30px;
   align-self: flex-start;
+  position: relative;
+}
+
+.order-summary:before {
+  content: '';
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  right: 10px;
+  bottom: 10px;
+  border: 1px solid rgba(18, 18, 18, 0.05);
+  pointer-events: none;
+  z-index: 1;
 }
 
 .summary-row {
@@ -266,14 +330,15 @@ export default {
 
 .summary-divider {
   height: 1px;
-  background-color: #ddd;
-  margin: 15px 0;
+  background-color: #e0e0e0;
+  margin: 20px 0;
 }
 
 .summary-row.total {
   font-size: 20px;
-  font-weight: bold;
-  color: #e74c3c;
+  font-weight: 700;
+  color: #121212;
+  font-family: 'Playfair Display', serif;
 }
 
 .summary-actions {
@@ -286,40 +351,86 @@ export default {
 .proceed-btn,
 .back-btn {
   width: 100%;
+  padding: 12px 20px;
+  font-family: 'Playfair Display', serif;
+  letter-spacing: 0.5px;
+  transition: all 0.3s ease;
+  border: 1px solid;
+  margin-bottom: 10px;
+}
+
+.proceed-btn {
+  background-color: #121212;
+  border-color: #121212;
+  color: white;
+}
+
+.proceed-btn:hover {
+  background-color: white;
+  color: #121212;
+}
+
+.back-btn {
+  background-color: white;
+  border-color: #121212;
+  color: #121212;
+}
+
+.back-btn:hover {
+  background-color: #f5f5f5;
 }
 
 .secure-checkout {
-  margin-top: 20px;
+  margin-top: 30px;
   text-align: center;
-  color: #7f8c8d;
+  color: #666666;
   font-size: 14px;
   display: flex;
   align-items: center;
   justify-content: center;
+  font-family: 'Playfair Display', serif;
+  font-style: italic;
 }
 
 .secure-icon {
-  margin-right: 5px;
-  color: #2ecc71;
+  margin-right: 8px;
+  color: #121212;
 }
 
 .empty-checkout {
   text-align: center;
-  padding: 50px;
+  padding: 60px;
   background-color: white;
-  border-radius: 8px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  border: 1px solid #e0e0e0;
+  position: relative;
+}
+
+.empty-checkout:before {
+  content: '';
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  right: 20px;
+  bottom: 20px;
+  border: 1px solid rgba(18, 18, 18, 0.05);
+  pointer-events: none;
+  z-index: 1;
 }
 
 .empty-checkout h2 {
-  font-size: 24px;
-  margin-bottom: 10px;
-  color: #2c3e50;
+  font-size: 26px;
+  margin-bottom: 15px;
+  color: #121212;
+  font-family: 'Playfair Display', serif;
+  font-weight: 600;
+  letter-spacing: 0.5px;
 }
 
 .empty-checkout p {
-  color: #7f8c8d;
-  margin-bottom: 20px;
+  color: #666666;
+  margin-bottom: 25px;
+  font-family: 'Playfair Display', serif;
+  font-style: italic;
 }
 
 @media (max-width: 992px) {

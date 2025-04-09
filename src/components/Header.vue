@@ -1,10 +1,10 @@
 <template>
   <header class="header">
-    <div class="container">
-      <div class="header-content">
+    <div class="header-content">
         <div class="logo">
           <router-link to="/">
-            <h1>FRESH FRESH</h1>
+            <h1>PLYFRESH</h1>
+            <span class="logo-subtitle">Est. 2025</span>
           </router-link>
         </div>
         <nav class="nav">
@@ -26,7 +26,6 @@
             <span v-if="cartItemCount > 0" class="cart-count">{{ cartItemCount }}</span>
           </router-link>
         </div>
-      </div>
     </div>
   </header>
 </template>
@@ -45,24 +44,43 @@ export default {
 <style scoped>
 .header {
   background-color: #fff;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  border-bottom: 1px solid #121212;
   position: sticky;
   top: 0;
   z-index: 100;
+  padding: 10px 0;
+  width: 100%;
 }
 
 .header-content {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 15px 0;
+  padding: 15px 40px;
+  max-width: 100%;
+  margin: 0 auto;
+}
+
+.logo {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
 }
 
 .logo h1 {
-  font-size: 24px;
+  font-size: 28px;
   font-weight: bold;
-  color: #3498db;
+  color: #121212;
   margin: 0;
+  font-family: 'Playfair Display', 'Times New Roman', Georgia, serif;
+  letter-spacing: 2px;
+}
+
+.logo-subtitle {
+  font-size: 12px;
+  color: #666;
+  font-style: italic;
+  letter-spacing: 1px;
 }
 
 .nav-list {
@@ -80,13 +98,37 @@ export default {
   transition: color 0.3s;
 }
 
+.nav-link {
+  font-family: 'Playfair Display', 'Times New Roman', Georgia, serif;
+  position: relative;
+}
+
 .nav-link:hover {
-  color: #3498db;
+  color: #666;
+}
+
+.nav-link:after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 1px;
+  bottom: -3px;
+  left: 0;
+  background-color: #121212;
+  transition: width 0.3s;
+}
+
+.nav-link:hover:after {
+  width: 100%;
 }
 
 .router-link-exact-active {
-  color: #3498db;
+  color: #121212;
   font-weight: bold;
+}
+
+.router-link-exact-active:after {
+  width: 100%;
 }
 
 .cart-icon {
@@ -106,7 +148,7 @@ export default {
   position: absolute;
   top: -8px;
   right: -8px;
-  background-color: #e74c3c;
+  background-color: #121212;
   color: white;
   border-radius: 50%;
   width: 20px;

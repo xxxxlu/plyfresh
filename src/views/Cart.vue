@@ -1,7 +1,12 @@
 <template>
   <div class="cart">
     <div class="container">
-      <h1 class="section-title">Shopping cart</h1>
+      <div class="decorative-border top-left"></div>
+      <div class="decorative-border top-right"></div>
+      <div class="decorative-border bottom-left"></div>
+      <div class="decorative-border bottom-right"></div>
+      <h1 class="section-title">Shopping Cart</h1>
+      <div class="decorative-line"></div>
 
       <div v-if="cartItems.length > 0" class="cart-content">
         <!-- Cart Items -->
@@ -23,7 +28,7 @@
                 <router-link :to="`/products/${item.id}`" class="cart-item-title">
                   {{ item.title }}
                 </router-link>
-                <p class="cart-item-author">{{ item.author }}</p>
+                <p class="cart-item-author">Origin: {{ item.author }}</p>
               </div>
             </div>
 
@@ -96,7 +101,7 @@
         <h2>The shopping cart is empty</h2>
         <p>There are no items in your shopping cart yet. </p>
         <router-link to="/products" class="btn btn-primary">
-          Browse books
+          Browse Products
         </router-link>
       </div>
     </div>
@@ -132,7 +137,10 @@ export default {
 
 <style scoped>
 .cart {
-  padding: 20px 0;
+  padding: 40px 0;
+  font-family: 'Playfair Display', 'Times New Roman', Georgia, serif;
+  background-color: #fafafa;
+  position: relative;
 }
 
 .cart-content {
@@ -145,19 +153,33 @@ export default {
   flex: 2;
   min-width: 600px;
   background-color: white;
-  border-radius: 8px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  border: 1px solid #e0e0e0;
   overflow: hidden;
+  position: relative;
+}
+
+.cart-items:before {
+  content: '';
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  right: 10px;
+  bottom: 10px;
+  border: 1px solid rgba(18, 18, 18, 0.05);
+  pointer-events: none;
+  z-index: 1;
 }
 
 .cart-header {
   display: flex;
   align-items: center;
-  padding: 15px;
-  background-color: #f7f7f7;
-  border-bottom: 1px solid #ddd;
-  font-weight: bold;
-  color: #2c3e50;
+  padding: 20px 15px;
+  background-color: #f9f9f9;
+  border-bottom: 1px solid #e0e0e0;
+  font-weight: 600;
+  color: #121212;
+  font-family: 'Playfair Display', serif;
+  letter-spacing: 0.5px;
 }
 
 .cart-item {
@@ -204,19 +226,23 @@ export default {
 }
 
 .cart-item-title {
-  font-weight: bold;
-  color: #2c3e50;
-  margin-bottom: 5px;
+  font-weight: 600;
+  color: #121212;
+  margin-bottom: 8px;
   display: block;
+  font-family: 'Playfair Display', serif;
+  transition: color 0.3s ease;
 }
 
 .cart-item-title:hover {
-  color: #3498db;
+  color: #666666;
 }
 
 .cart-item-author {
-  color: #7f8c8d;
+  color: #666666;
   font-size: 14px;
+  font-family: 'Playfair Display', serif;
+  font-style: italic;
 }
 
 .cart-item-price {
@@ -226,18 +252,23 @@ export default {
 .quantity-control {
   display: inline-flex;
   align-items: center;
-  border: 1px solid #ddd;
-  border-radius: 4px;
+  border: 1px solid #e0e0e0;
   overflow: hidden;
 }
 
 .quantity-btn {
-  background-color: #f7f7f7;
+  background-color: #f9f9f9;
   border: none;
   width: 30px;
   height: 30px;
   font-size: 16px;
   cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.quantity-btn:hover {
+  background-color: #121212;
+  color: white;
 }
 
 .quantity-btn:disabled {
@@ -250,29 +281,59 @@ export default {
   height: 30px;
   text-align: center;
   border: none;
-  border-left: 1px solid #ddd;
-  border-right: 1px solid #ddd;
+  border-left: 1px solid #e0e0e0;
+  border-right: 1px solid #e0e0e0;
+  font-family: 'Playfair Display', serif;
 }
 
 .cart-item-total {
-  font-weight: bold;
-  color: #e74c3c;
+  font-weight: 600;
+  color: #121212;
+  font-family: 'Playfair Display', serif;
 }
 
 .cart-summary {
   flex: 1;
   min-width: 300px;
   background-color: white;
-  border-radius: 8px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-  padding: 20px;
+  border: 1px solid #e0e0e0;
+  padding: 30px;
   align-self: flex-start;
+  position: relative;
+}
+
+.cart-summary:before {
+  content: '';
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  right: 10px;
+  bottom: 10px;
+  border: 1px solid rgba(18, 18, 18, 0.05);
+  pointer-events: none;
+  z-index: 1;
 }
 
 .summary-title {
-  font-size: 20px;
-  margin-bottom: 20px;
-  color: #2c3e50;
+  font-size: 22px;
+  margin-bottom: 25px;
+  color: #121212;
+  font-family: 'Playfair Display', serif;
+  font-weight: 600;
+  text-align: center;
+  position: relative;
+  padding-bottom: 15px;
+}
+
+.summary-title:after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 40px;
+  height: 1px;
+  background-color: #121212;
 }
 
 .summary-row {
@@ -284,35 +345,82 @@ export default {
 
 .summary-divider {
   height: 1px;
-  background-color: #ddd;
-  margin: 15px 0;
+  background-color: #e0e0e0;
+  margin: 20px 0;
+  position: relative;
+}
+
+.summary-divider:before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 30px;
+  height: 3px;
+  background-color: rgba(18, 18, 18, 0.1);
 }
 
 .summary-row.total {
   font-size: 20px;
-  font-weight: bold;
-  color: #e74c3c;
+  font-weight: 700;
+  color: #121212;
+  font-family: 'Playfair Display', serif;
 }
 
 .summary-actions {
   margin-top: 20px;
 }
 
-.checkout-btn {
+.checkout-btn, .continue-btn {
   width: 100%;
+  padding: 12px 20px;
+  font-family: 'Playfair Display', serif;
+  letter-spacing: 0.5px;
+  transition: all 0.3s ease;
+  border: 1px solid;
+}
+
+.checkout-btn {
   margin-bottom: 10px;
+  background-color: #121212;
+  border-color: #121212;
+  color: white;
+}
+
+.checkout-btn:hover {
+  background-color: white;
+  color: #121212;
 }
 
 .continue-btn {
-  width: 100%;
+  background-color: white;
+  border-color: #121212;
+  color: #121212;
+}
+
+.continue-btn:hover {
+  background-color: #f5f5f5;
 }
 
 .empty-cart {
   text-align: center;
-  padding: 50px;
+  padding: 60px;
   background-color: white;
-  border-radius: 8px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  border: 1px solid #e0e0e0;
+  position: relative;
+}
+
+.empty-cart:before {
+  content: '';
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  right: 20px;
+  bottom: 20px;
+  border: 1px solid rgba(18, 18, 18, 0.05);
+  pointer-events: none;
+  z-index: 1;
 }
 
 .empty-cart-icon {
@@ -322,14 +430,19 @@ export default {
 }
 
 .empty-cart h2 {
-  font-size: 24px;
-  margin-bottom: 10px;
-  color: #2c3e50;
+  font-size: 26px;
+  margin-bottom: 15px;
+  color: #121212;
+  font-family: 'Playfair Display', serif;
+  font-weight: 600;
+  letter-spacing: 0.5px;
 }
 
 .empty-cart p {
-  color: #7f8c8d;
-  margin-bottom: 20px;
+  color: #666666;
+  margin-bottom: 25px;
+  font-family: 'Playfair Display', serif;
+  font-style: italic;
 }
 
 @media (max-width: 992px) {

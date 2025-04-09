@@ -4,7 +4,7 @@
       <!-- Breadcrumb -->
       <div class="breadcrumb">
         <router-link to="/">Home</router-link> &gt;
-        <router-link to="/products">All books</router-link> &gt;
+        <router-link to="/products">All products</router-link> &gt;
         <span>{{ book.title }}</span>
       </div>
 
@@ -17,7 +17,7 @@
         <!-- Product Info -->
         <div class="product-info">
           <h1 class="product-title">{{ book.title }}</h1>
-          <p class="product-author">Author: {{ book.author }}</p>
+          <p class="product-author">Origin: {{ book.author }}</p>
 
           <div class="product-rating">
             <span class="rating-stars">
@@ -28,7 +28,7 @@
           </div>
 
           <div class="product-category">
-            Category: <router-link :to="`/products?category=${book.category}`">{{ book.category }}</router-link>
+            Type: <router-link :to="`/products?category=${book.category}`">{{ book.category }}</router-link>
           </div>
 
           <div class="product-price">
@@ -59,13 +59,19 @@
 
       <!-- Product Description -->
       <div class="product-description">
-        <h2>Book details</h2>
+        <div class="decorative-corner top-left"></div>
+        <div class="decorative-corner top-right"></div>
+        <div class="decorative-corner bottom-left"></div>
+        <div class="decorative-corner bottom-right"></div>
+        <h2>Product details</h2>
+        <div class="decorative-line"></div>
         <p>{{ book.description }}</p>
       </div>
 
-      <!-- Related Books -->
+      <!-- Related Products -->
       <div class="related-books">
-        <h2>Related books</h2>
+        <h2>You may also like</h2>
+        <div class="decorative-line"></div>
         <div class="book-grid">
           <div v-for="relatedBook in relatedBooks" :key="relatedBook.id" class="book-card">
             <router-link :to="`/products/${relatedBook.id}`">
@@ -74,7 +80,7 @@
               </div>
               <div class="book-info">
                 <h3 class="book-title">{{ relatedBook.title }}</h3>
-                <p class="book-author">{{ relatedBook.author }}</p>
+                <p class="book-author">Origin: {{ relatedBook.author }}</p>
                 <p class="book-price">Rs.{{ relatedBook.price }}</p>
               </div>
             </router-link>
@@ -85,8 +91,8 @@
 
     <!-- Loading or Not Found -->
     <div v-else class="not-found">
-      <p>The book does not exist or has been removed. </p>
-      <router-link to="/products" class="btn btn-primary">Browse all books</router-link>
+      <p>The product does not exist or has been removed. </p>
+      <router-link to="/products" class="btn btn-primary">Browse all products</router-link>
     </div>
   </div>
 </template>
@@ -153,13 +159,17 @@ export default {
 
 <style scoped>
 .product-detail {
-  padding: 20px 0;
+  padding: 40px 0;
+  font-family: 'Playfair Display', 'Times New Roman', Georgia, serif;
+  background-color: #fafafa;
 }
 
 .breadcrumb {
-  margin-bottom: 20px;
+  margin-bottom: 30px;
   font-size: 14px;
-  color: #7f8c8d;
+  color: #666666;
+  font-family: 'Playfair Display', serif;
+  letter-spacing: 0.5px;
 }
 
 .breadcrumb a {
@@ -174,7 +184,8 @@ export default {
   display: flex;
   flex-wrap: wrap;
   gap: 40px;
-  margin-bottom: 40px;
+  margin-bottom: 60px;
+  position: relative;
 }
 
 .product-image {
@@ -182,9 +193,21 @@ export default {
   min-width: 300px;
   max-width: 450px;
   background-color: white;
-  border-radius: 8px;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  border: 1px solid #e0e0e0;
   overflow: hidden;
+  position: relative;
+}
+
+.product-image:before {
+  content: '';
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  right: 10px;
+  bottom: 10px;
+  border: 1px solid rgba(18, 18, 18, 0.05);
+  pointer-events: none;
+  z-index: 1;
 }
 
 .product-image img {
@@ -199,15 +222,31 @@ export default {
 }
 
 .product-title {
-  font-size: 28px;
-  margin-bottom: 10px;
-  color: #2c3e50;
+  font-size: 32px;
+  margin-bottom: 15px;
+  color: #121212;
+  font-family: 'Playfair Display', serif;
+  font-weight: 700;
+  position: relative;
+  padding-bottom: 15px;
+}
+
+.product-title:after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 50px;
+  height: 1px;
+  background-color: #121212;
 }
 
 .product-author {
   font-size: 18px;
-  color: #7f8c8d;
-  margin-bottom: 15px;
+  color: #666666;
+  margin-bottom: 20px;
+  font-family: 'Playfair Display', serif;
+  font-style: italic;
 }
 
 .product-rating {
@@ -330,8 +369,19 @@ export default {
 }
 
 .add-to-cart-btn {
-  padding: 10px 30px;
-  height: 40px;
+  padding: 12px 30px;
+  height: 44px;
+  background-color: #121212;
+  color: white;
+  border: 1px solid #121212;
+  font-family: 'Playfair Display', serif;
+  letter-spacing: 0.5px;
+  transition: all 0.3s ease;
+}
+
+.add-to-cart-btn:hover {
+  background-color: white;
+  color: #121212;
 }
 
 .add-to-cart-btn:disabled {
@@ -341,30 +391,79 @@ export default {
 
 .product-description {
   background-color: white;
-  padding: 30px;
-  border-radius: 8px;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-  margin-bottom: 40px;
+  padding: 40px;
+  border: 1px solid #e0e0e0;
+  margin-bottom: 60px;
+  position: relative;
+}
+
+.decorative-corner {
+  position: absolute;
+  width: 30px;
+  height: 30px;
+  border-color: rgba(18, 18, 18, 0.15);
+}
+
+.top-left {
+  top: 15px;
+  left: 15px;
+  border-top: 1px solid;
+  border-left: 1px solid;
+}
+
+.top-right {
+  top: 15px;
+  right: 15px;
+  border-top: 1px solid;
+  border-right: 1px solid;
+}
+
+.bottom-left {
+  bottom: 15px;
+  left: 15px;
+  border-bottom: 1px solid;
+  border-left: 1px solid;
+}
+
+.bottom-right {
+  bottom: 15px;
+  right: 15px;
+  border-bottom: 1px solid;
+  border-right: 1px solid;
 }
 
 .product-description h2 {
-  font-size: 24px;
-  margin-bottom: 20px;
-  color: #2c3e50;
+  font-size: 28px;
+  margin-bottom: 15px;
+  color: #121212;
+  font-family: 'Playfair Display', serif;
+  text-align: center;
+}
+
+.decorative-line {
+  height: 1px;
+  width: 100px;
+  background-color: rgba(18, 18, 18, 0.3);
+  margin: 0 auto 30px;
 }
 
 .product-description p {
   line-height: 1.8;
+  color: #333;
+  font-family: 'Playfair Display', serif;
+  font-size: 16px;
 }
 
 .related-books {
-  margin-bottom: 40px;
+  margin-bottom: 60px;
 }
 
 .related-books h2 {
-  font-size: 24px;
-  margin-bottom: 20px;
-  color: #2c3e50;
+  font-size: 28px;
+  margin-bottom: 15px;
+  color: #121212;
+  font-family: 'Playfair Display', serif;
+  text-align: center;
 }
 
 .book-grid {
@@ -375,15 +474,32 @@ export default {
 
 .book-card {
   background-color: white;
-  border-radius: 8px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  border: 1px solid #e0e0e0;
   overflow: hidden;
-  transition: transform 0.3s, box-shadow 0.3s;
+  transition: transform 0.3s;
+  position: relative;
+}
+
+.book-card:before {
+  content: '';
+  position: absolute;
+  top: 5px;
+  left: 5px;
+  right: 5px;
+  bottom: 5px;
+  border: 1px solid rgba(18, 18, 18, 0.05);
+  pointer-events: none;
+  z-index: 1;
+  opacity: 0;
+  transition: opacity 0.3s ease;
 }
 
 .book-card:hover {
   transform: translateY(-5px);
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.book-card:hover:before {
+  opacity: 1;
 }
 
 .book-image {
@@ -403,19 +519,24 @@ export default {
 
 .book-title {
   font-size: 16px;
-  margin-bottom: 5px;
-  color: #2c3e50;
+  margin-bottom: 8px;
+  color: #121212;
+  font-family: 'Playfair Display', serif;
+  font-weight: 600;
 }
 
 .book-author {
-  color: #7f8c8d;
+  color: #666666;
   font-size: 14px;
-  margin-bottom: 5px;
+  margin-bottom: 8px;
+  font-family: 'Playfair Display', serif;
+  font-style: italic;
 }
 
 .book-price {
   font-weight: bold;
-  color: #e74c3c;
+  color: #121212;
+  font-family: 'Playfair Display', serif;
 }
 
 .not-found {
