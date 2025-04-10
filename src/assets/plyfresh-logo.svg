@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="240" height="80" viewBox="0 0 240 80" xmlns="http://www.w3.org/2000/svg">
+  <!-- Logo background with subtle book texture -->
+  <defs>
+    <pattern id="book-texture" patternUnits="userSpaceOnUse" width="10" height="10">
+      <path d="M0,0 L10,10 M10,0 L0,10" stroke="#f9f9f9" stroke-width="0.5" />
+    </pattern>
+  </defs>
+  
+  <!-- Open book shape as background -->
+  <path d="M30,20 C30,15 40,10 60,10 L180,10 C200,10 210,15 210,20 L210,60 C210,65 200,70 180,70 L60,70 C40,70 30,65 30,60 Z" 
+        fill="white" stroke="black" stroke-width="2" />
+  <path d="M120,10 L120,70" stroke="black" stroke-width="1" />
+  
+  <!-- Decorative page edges -->
+  <path d="M60,12 L180,12 M60,68 L180,68" stroke="black" stroke-width="0.5" stroke-dasharray="3,3" />
+  
+  <!-- Logo text -->
+  <g transform="translate(55, 45)">
+    <text font-family="Georgia, serif" font-size="28" font-weight="bold" letter-spacing="1">
+      <tspan fill="black">Plyf</tspan>
+      <tspan fill="black" font-style="italic">Fresh</tspan>
+    </text>
+  </g>
+  
+  <!-- Decorative quill pen -->
+  <path d="M20,60 C30,50 25,30 40,25" stroke="black" stroke-width="1.5" fill="none" />
+  <path d="M20,60 L25,65 L22,61" fill="black" />
+  
+  <!-- Literary flourish -->
+  <path d="M190,25 C200,30 195,50 205,60" stroke="black" stroke-width="1.5" fill="none" />
+  <path d="M205,60 L210,65 L207,61" fill="black" />
+</svg>

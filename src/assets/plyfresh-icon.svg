@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="48" height="48" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+  <!-- Small book icon with literary theme -->
+  <rect x="8" y="8" width="32" height="32" rx="2" fill="white" stroke="black" stroke-width="2" />
+  
+  <!-- Book spine and pages -->
+  <path d="M24,8 L24,40" stroke="black" stroke-width="1.5" />
+  <path d="M12,12 L36,12 M12,36 L36,36" stroke="black" stroke-width="0.75" stroke-dasharray="2,2" />
+  
+  <!-- Stylized "P" for PlyfFresh -->
+  <path d="M17,18 L17,30 M17,18 C17,18 21,18 21,21 C21,24 17,24 17,24" stroke="black" stroke-width="2" fill="none" />
+  
+  <!-- Decorative quill element -->
+  <path d="M28,20 C32,22 30,28 33,30" stroke="black" stroke-width="1.5" fill="none" />
+  <path d="M33,30 L35,33 L33,31" fill="black" />
+</svg>

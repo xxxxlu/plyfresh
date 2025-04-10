@@ -3,7 +3,7 @@
     <div class="header-content">
         <div class="logo">
           <router-link to="/">
-            <h1>PLYFRESH</h1>
+            <img src="../assets/plyfresh-logo.svg" alt="PlyFresh">
             <span class="logo-subtitle">Est. 2025</span>
           </router-link>
         </div>
