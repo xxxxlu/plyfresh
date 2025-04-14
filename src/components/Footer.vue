@@ -20,7 +20,7 @@
         </div>
       </div>
       <div class="footer-bottom">
-        <p>&copy; Copyright © {{ currentYear }} | Powered by Data Network Solutions (SMC-Private) Limited</p>
+        <p>&copy; Copyright {{ currentYear }}PlyFresh Store. Powered by Data Tech Solutions (SMC-Private) Limited</p>
       </div>
   </footer>
 </template>
